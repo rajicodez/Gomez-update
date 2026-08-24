@@ -29,7 +29,7 @@ export const navLinks: NavLink[] = [
     href: "/branches/hanwella",
     children: [
       { label: "Hanwella Medical Center", href: "/branches/hanwella" },
-      { label: "Collecting Centers", href: "/collecting-centers" },
+      { label: "Sample Collection Centers", href: "/collecting-centers" },
     ],
   },
   { label: "Event", href: "/event" },
