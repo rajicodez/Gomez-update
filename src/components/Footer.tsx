@@ -81,7 +81,7 @@ export function Footer() {
                   href="/collecting-centers"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Collecting Centers
+                  Gomez Laboratory Sample Collection Centers
                 </Link>
               </li>
             </ul>

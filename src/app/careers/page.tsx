@@ -81,7 +81,7 @@ const benefits = [
 ];
 
 const careersEmail = "gomezhospital.careers@gmail.com";
-const careersPhone = "074 2028741";
+const careersPhone = "+94 74 202 8741";
 
 export default function CareersPage() {
   return (
@@ -94,6 +94,59 @@ export default function CareersPage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-start mb-20">
+            <div className="rounded-3xl bg-gradient-to-br from-primary to-[#0d3055] text-white p-8 lg:p-10 overflow-hidden relative">
+              <div className="absolute -top-16 -right-16 w-56 h-56 bg-accent/20 rounded-full blur-3xl" />
+              <div className="relative">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 text-accent-2 flex items-center justify-center mb-6">
+                  <Briefcase size={26} />
+                </div>
+                <div className="text-xs font-bold uppercase tracking-[0.25em] text-accent-2 mb-3">
+                  Careers at Gomez
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold">Working with Us</h2>
+                <p className="mt-5 text-xl font-semibold text-white/95">
+                  Your journey with Gomez starts here.
+                </p>
+                <p className="mt-2 text-white/75">Join us. Grow with us. Care Always.</p>
+              </div>
+            </div>
+
+            <div className="text-muted leading-relaxed space-y-5 lg:py-3">
+              <p>
+                At Gomez Hospital, <strong className="text-primary">We Care Always</strong>—for
+                our patients, our team, and the community we serve. We believe our people are our
+                greatest strength and are committed to creating a supportive environment where
+                every individual can learn, grow, and build a rewarding career.
+              </p>
+              <p>
+                As we continue to grow, we welcome passionate, dedicated, and talented individuals
+                to join the Gomez team and contribute to delivering quality healthcare with care
+                and excellence.
+              </p>
+              <p>
+                Explore our available career opportunities under the <strong className="text-primary">Vacancies</strong>{" "}
+                section and take the next step in your career with Gomez Hospital.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href={`mailto:${careersEmail}`}
+                  className="inline-flex items-center gap-2 rounded-full bg-accent-soft text-primary hover:text-accent font-semibold px-5 py-3 transition-colors"
+                >
+                  <Mail size={17} className="text-accent" />
+                  {careersEmail}
+                </a>
+                <a
+                  href="tel:+94742028741"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent-soft text-primary hover:text-accent font-semibold px-5 py-3 transition-colors"
+                >
+                  <Phone size={17} className="text-accent" />
+                  +94 74 202 8741
+                </a>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <div className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-3">
               Why Gomez
@@ -125,7 +178,7 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <div className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-3">
-              Open Positions
+              Vacancies
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-primary">Current Openings</h2>
             <div className="section-underline" />

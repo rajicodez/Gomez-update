@@ -42,17 +42,10 @@ const directors: {
 ];
 
 const management = [
-  { name: "Dr. Jayasekara", role: "General Manager", image: "" },
-  { name: "—", role: "Operations Manager", image: "" },
-  { name: "—", role: "HR Manager", image: "" },
-];
-
-const additionalManagement = [
-  { name: "Management Member 1", role: "Management Team", description: "Placeholder description for management team member.", image: "" },
-  { name: "Management Member 2", role: "Management Team", description: "Placeholder description for management team member.", image: "" },
-  { name: "Management Member 3", role: "Management Team", description: "Placeholder description for management team member.", image: "" },
-  { name: "Management Member 4", role: "Management Team", description: "Placeholder description for management team member.", image: "" },
-  { name: "Management Member 5", role: "Management Team", description: "Placeholder description for management team member.", image: "" },
+  { name: "Mr. L.D. Jayasekara", role: "General Manager", image: "" },
+  { name: "", role: "Matron", image: "" },
+  { name: "Ms. Hasala Perera", role: "HR Manager", image: "" },
+  { name: "Mr. Milan Ariyarathne", role: "Accountant", image: "" },
 ];
 
 export default function AboutPage() {
@@ -185,10 +178,10 @@ export default function AboutPage() {
               Meet the team leading Gomez Hospital with care, experience, and commitment.
             </p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {management.map((m, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {management.map((m) => (
               <div
-                key={i}
+                key={m.role}
                 className="lift bg-white border border-border rounded-2xl overflow-hidden"
               >
                 <div className="aspect-square relative bg-surface-2 flex items-center justify-center text-muted">
@@ -199,32 +192,8 @@ export default function AboutPage() {
                   )}
                 </div>
                 <div className="p-5 text-center">
-                  <h3 className="font-bold text-primary">{m.name}</h3>
+                  <h3 className="font-bold text-primary min-h-6">{m.name}</h3>
                   <p className="text-sm text-muted mt-1">{m.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mt-12">
-            {additionalManagement.map((m, i) => (
-              <div
-                key={i}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-[340px] lift bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md"
-              >
-                <div className="aspect-square relative bg-surface-2 flex items-center justify-center text-muted/30">
-                  {m.image ? (
-                    <Image src={m.image} alt={m.name} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 50vw" />
-                  ) : (
-                    <User size={80} strokeWidth={1} />
-                  )}
-                </div>
-                <div className="p-6 text-center">
-                  <h3 className="font-bold text-lg text-primary">{m.name}</h3>
-                  <p className="text-sm font-semibold text-accent mt-1">{m.role}</p>
-                  {m.description && (
-                    <p className="text-sm text-muted mt-3 leading-relaxed">{m.description}</p>
-                  )}
                 </div>
               </div>
             ))}
