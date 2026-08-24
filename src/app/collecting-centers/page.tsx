@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { collectingCenters } from "@/data/centers";
 
@@ -32,6 +32,18 @@ export default function CentersPage() {
                     <div key={line}>{line}</div>
                   ))}
                 </address>
+                <div className="mt-4 pt-4 border-t border-border space-y-2">
+                  {c.phones.map((phone) => (
+                    <a
+                      key={phone}
+                      href={`tel:${phone}`}
+                      className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors"
+                    >
+                      <Phone size={15} className="text-accent" aria-hidden />
+                      {phone}
+                    </a>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
