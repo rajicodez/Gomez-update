@@ -1,10 +1,9 @@
-import { PromotionCard } from "@/components/PromotionCard";
-import { promotions } from "@/data/promotions";
+import { PromotionGroups } from "@/components/PromotionGroups";
 
 export const metadata = {
   title: "Promotions & Discounts — Gomez Hospital",
   description:
-    "Exclusive medical promotions and discounts on health checkups, dental care, maternity packages, and more at Gomez Hospital.",
+    "Explore Gomez Hospital discounts across laboratory, pharmacy and channeling services.",
 };
 
 export default function PromotionPage() {
@@ -21,19 +20,15 @@ export default function PromotionPage() {
             Discounts
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-slate-600 text-base lg:text-lg leading-relaxed">
-            Premium healthcare offers designed to make essential screenings and specialist care more
-            accessible.
+            Explore our current discounts across laboratory, pharmacy and channeling services.
           </p>
         </div>
       </section>
 
       <section className="pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8">
-            {promotions.map((promotion) => (
-              <PromotionCard key={promotion.id} promotion={promotion} />
-            ))}
-          </div>
+          <h2 className="sr-only">Discounts by service</h2>
+          <PromotionGroups />
         </div>
       </section>
     </>

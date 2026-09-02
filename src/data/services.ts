@@ -37,7 +37,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "opd-services",
-    title: "24 Hours OPD Services",
+    title: "24 Hours Services (OPD)",
     image: "/images/OPD-Wellness.jpg",
     icon: Clock,
     description:
@@ -57,7 +57,6 @@ export const services: Service[] = [
       "Dr. Padmalal",
       "Dr. Chandana",
       "Dr. Nandasena",
-      "Dr. Risho",
     ],
     phones: [
       { label: "Direct", display: "036 720 2525", tel: "0367202525" },
@@ -75,7 +74,7 @@ export const services: Service[] = [
       "24/7 Emergency Response",
       "Trained Paramedic Staff",
       "Life-Support Equipment On Board",
-      "Hospital Transfer & Coordination",
+      "Hospital Transfer & Coordination: Safe patient transfers to Gomez Hospital and other government hospitals when required.",
       "Island-Wide Coverage",
     ],
     contact:
@@ -88,7 +87,7 @@ export const services: Service[] = [
   },
   {
     slug: "specialist-services",
-    title: "Specialist Services",
+    title: "Specialist Services and Channeling",
     image: "/images/spelitiles.png",
     icon: Stethoscope,
     description:
@@ -99,6 +98,7 @@ export const services: Service[] = [
       "General Surgeons & Physicians",
       "Paediatricians & Dermatologists",
       "ENT & Eye Surgeons",
+      "Specialist consultations by doctors visiting from Avissawella District Hospital",
     ],
     contact:
       "Consultations are available by appointment. Please check the doctor's schedule or contact the reception.",
@@ -113,9 +113,10 @@ export const services: Service[] = [
     features: [
       "Luxury & Semi-Luxury Rooms",
       "A/C & Non-A/C Rooms",
-      "Private Rooms with Attached Toilets",
+      "Private Rooms with Attached Toilet",
       "Male & Female Wards",
       "24/7 Nursing Care",
+      "Meals and Hot Water",
     ],
     contact:
       "For room availability and admission inquiries, please contact our admission desk.",
@@ -126,7 +127,7 @@ export const services: Service[] = [
   },
   {
     slug: "hdu-emergency",
-    title: "HDU & Emergency",
+    title: "ETU And HDU",
     image: "/images/emergency.jpg",
     icon: Ambulance,
     description:
@@ -153,7 +154,6 @@ export const services: Service[] = [
       "Laparoscopic Surgery",
       "Orthopedic Surgery",
       "Caesarean Sections",
-      "Laparoscopic Sterilization (LRT)",
     ],
     contact: "Surgeries are scheduled upon consultant recommendation.",
     phones: [
@@ -179,7 +179,7 @@ export const services: Service[] = [
   },
   {
     slug: "fertility-services",
-    title: "Fertility Services",
+    title: "Fertility Treatment",
     image: "/images/fertility.jpg",
     icon: HeartPulse,
     description:
@@ -196,7 +196,7 @@ export const services: Service[] = [
   },
   {
     slug: "diagnostic-imaging",
-    title: "Diagnostic Imaging",
+    title: "Diagnostic Services / Imaging",
     image: "/images/diagnostic.jpg",
     icon: ScanLine,
     description:
@@ -204,9 +204,8 @@ export const services: Service[] = [
     features: [
       "Digital X-Ray",
       "Ultrasound Scanning (USS)",
-      "ECG Services",
       "Colour Doppler Scans",
-      "Echocardiography",
+      "Echocardiography: Ultrasound-based heart imaging to assess heart structure, function, valves, and blood flow.",
     ],
     contact:
       "Walk-in services available for most scans. Specialized scans may require an appointment.",
@@ -217,13 +216,14 @@ export const services: Service[] = [
     image: "/images/laboratory.jpg",
     icon: TestTubes,
     description:
-      "Our fully automated medical laboratory adheres to international quality standards, delivering precise and reliable test reports.",
+      "Reliable laboratory testing services supported by experienced staff and essential diagnostic facilities for accurate and timely results.",
     features: [
       "Haematology & Biochemistry",
       "Microbiology & Serology",
       "Hormonal Assays",
       "Pathology Services",
       "Sample Collection Center",
+      "Mobile Services",
     ],
     contact:
       "Open 24/7 for sample collection. Fast-tracked reports available for urgent cases.",
@@ -241,10 +241,9 @@ export const services: Service[] = [
       "Our in-house pharmacy ensures that essential medicines and surgical consumables are always accessible to our patients.",
     features: [
       "24/7 Service",
-      "Prescription Dispensing",
-      "Over-the-Counter Medicines",
       "Surgical Consumables",
       "Quality Assured Pharmaceuticals",
+      "Home Delivery",
     ],
     contact: "Located on the ground floor for your convenience.",
     phone: {

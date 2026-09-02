@@ -19,8 +19,8 @@ export function About() {
         <div className="relative">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md">
             <Image
-              src="/images/about_us_4.png"
-              alt="Gomez Hospital"
+              src="/images/2021-05-111.jpg"
+              alt="Hospital exterior"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
@@ -28,8 +28,8 @@ export function About() {
           </div>
           <div className="absolute -bottom-8 -right-4 lg:right-8 w-48 h-48 lg:w-60 lg:h-60 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
             <Image
-              src="/images/2021-05-111.jpg"
-              alt="Hospital exterior"
+              src="/images/about_us_4.png"
+              alt="Gomez Hospital Staff"
               fill
               className="object-cover"
               sizes="240px"

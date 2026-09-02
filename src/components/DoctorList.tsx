@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Search, X, Info } from "lucide-react";
@@ -8,6 +8,7 @@ import type { Doctor } from "@/data/doctors";
 import { DoctorCard } from "@/components/DoctorCard";
 import { getSpecialtyInfos } from "@/data/specialties";
 import { getSpecialtyClinicLabel, resolveSpecialtyFilter, specialtyClinics } from "@/data/services";
+import { normalizeSearch, getDoctorSuggestions } from "@/data/doctors";
 
 type Props = {
   doctors: Doctor[];
@@ -18,13 +19,35 @@ export function DoctorList({ doctors, specialties }: Props) {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [specialtyParam, setSpecialtyParam] = useState("");
+  
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const q = searchParams.get("q");
     const s = searchParams.get("specialty");
-    setQuery(q ?? "");
-    setSpecialtyParam(s ?? "");
-  }, [searchParams]);
+    if (q) setQuery(q);
+    if (s) setSpecialtyParam(s);
+  }, []); // Only run once on mount
+
+  useEffect(() => {
+    setActiveIndex(-1);
+  }, [query]);
+
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const suggestions = useMemo(() => {
+    return getDoctorSuggestions(query);
+  }, [query]);
 
   const activeFilterSpecialties = useMemo(
     () => resolveSpecialtyFilter(specialtyParam, specialties),
@@ -42,19 +65,48 @@ export function DoctorList({ doctors, specialties }: Props) {
   );
 
   const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim();
+    const q = normalizeSearch(query);
+
     return doctors.filter((d) => {
       const matchQ =
         !q ||
-        d.name.toLowerCase().includes(q) ||
-        d.specialty.toLowerCase().includes(q) ||
-        d.hospital.toLowerCase().includes(q);
+        normalizeSearch(d.name).includes(q) ||
+        normalizeSearch(d.specialty).includes(q) ||
+        normalizeSearch(d.hospital).includes(q);
       const matchS =
         activeFilterSpecialties.length === 0 ||
         activeFilterSpecialties.includes(d.specialty);
       return matchQ && matchS;
     });
   }, [doctors, query, activeFilterSpecialties]);
+
+  const handleSelectSuggestion = (name: string) => {
+    setQuery(name);
+    setShowDropdown(false);
+    // Smooth scroll to results
+    setTimeout(() => {
+      document.getElementById("doctor-results-grid")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 100);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showDropdown || !query) return;
+    
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev > 0 ? prev - 1 : -1));
+    } else if (e.key === "Enter") {
+      if (activeIndex >= 0 && suggestions[activeIndex]) {
+        e.preventDefault();
+        handleSelectSuggestion(suggestions[activeIndex].name);
+      }
+    } else if (e.key === "Escape") {
+      setShowDropdown(false);
+    }
+  };
 
   const selectValue = specialtyClinics.some((c) => c.slug === specialtyParam)
     ? ""
@@ -65,7 +117,7 @@ export function DoctorList({ doctors, specialties }: Props) {
   return (
     <>
       <div className="flex flex-col md:flex-row gap-3 mb-8 max-w-4xl mx-auto">
-        <div className="relative flex-1">
+        <div className="relative flex-1" ref={searchContainerRef}>
           <Search
             size={18}
             className="absolute left-4 top-1/2 -translate-y-1/2 text-muted"
@@ -73,11 +125,43 @@ export function DoctorList({ doctors, specialties }: Props) {
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setShowDropdown(true);
+            }}
+            onFocus={() => setShowDropdown(true)}
+            onKeyDown={handleKeyDown}
             placeholder="Search by name, specialty or hospital..."
             className="w-full pl-11 pr-4 py-3 rounded-full border border-border bg-white focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
             suppressHydrationWarning
           />
+          
+          {showDropdown && query.trim() !== "" && (
+            <div className="absolute top-full mt-2 left-0 w-full bg-white border border-border rounded-2xl shadow-xl z-50 overflow-hidden py-2">
+              {suggestions.length > 0 ? (
+                <ul className="max-h-[300px] overflow-y-auto">
+                  {suggestions.map((s, i) => (
+                    <li key={s.name}>
+                      <button
+                        type="button"
+                        onClick={() => handleSelectSuggestion(s.name)}
+                        onMouseEnter={() => setActiveIndex(i)}
+                        className={`w-full text-left px-5 py-2.5 text-sm transition-colors ${
+                          i === activeIndex
+                            ? "bg-accent-soft text-accent font-medium"
+                            : "text-primary hover:bg-accent-soft hover:text-accent"
+                        }`}
+                      >
+                        {s.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="px-5 py-3 text-sm text-muted">No doctors found</div>
+              )}
+            </div>
+          )}
         </div>
         <select
           value={selectValue}
@@ -147,11 +231,11 @@ export function DoctorList({ doctors, specialties }: Props) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-16 text-muted">
+        <div id="doctor-results-grid" className="text-center py-16 text-muted">
           No doctors found matching your search.
         </div>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div id="doctor-results-grid" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((d) => (
             <DoctorCard key={d.name} doctor={d} />
           ))}

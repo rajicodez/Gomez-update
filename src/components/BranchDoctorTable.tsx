@@ -8,13 +8,20 @@ export function BranchDoctorTable({ doctors }: { doctors: BranchDoctor[] }) {
   const [q, setQ] = useState("");
 
   const filtered = useMemo(() => {
-    const t = q.toLowerCase().trim();
+    const normalize = (value: string) =>
+      (value || "")
+        .toLowerCase()
+        .replace(/\./g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const t = normalize(q);
     if (!t) return doctors;
     return doctors.filter(
       (d) =>
-        d.name.toLowerCase().includes(t) ||
-        d.specialty.toLowerCase().includes(t) ||
-        d.hospital.toLowerCase().includes(t)
+        normalize(d.name).includes(t) ||
+        normalize(d.specialty).includes(t) ||
+        normalize(d.hospital).includes(t)
     );
   }, [doctors, q]);
 

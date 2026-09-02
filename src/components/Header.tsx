@@ -44,7 +44,8 @@ export function Header() {
             priority
           />
           <div className="hidden sm:flex flex-col justify-center">
-            <div className="font-bold text-lg lg:text-[22px] text-primary tracking-tight leading-none mb-1 lg:mb-1.5">{site.name}</div>
+            <div className="font-bold text-lg lg:text-[22px] text-primary tracking-tight leading-none mb-0.5 lg:mb-1">{site.name}</div>
+            <div className="text-xs lg:text-sm font-semibold text-primary/80 leading-none mb-1 lg:mb-1.5">Awissawella</div>
             <div className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.1em] lg:tracking-[0.12em] text-muted leading-none">
               Est. {site.established} · {site.tagline}
             </div>
