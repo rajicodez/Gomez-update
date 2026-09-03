@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   description:
     "Gomez Hospital Pvt Ltd, the leading private healthcare provider in Avissawella and Seethawakapura. Over 30 years of trusted medical care, 40+ consultants, 24/7 emergency.",
   keywords: ["Gomez Hospital", "Avissawella", "Hanwella", "private hospital Sri Lanka"],
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/images/gomez_logo.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
