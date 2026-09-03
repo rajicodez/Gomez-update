@@ -24,52 +24,58 @@ export const metadata = {
 
 const openings = [
   {
-    icon: Stethoscope,
-    title: "Medical Officer",
-    type: "Full-time",
-    location: "Avissawella · Hanwella",
-    desc: "MBBS qualified medical officers for OPD, wards and emergency duties.",
-    color: "from-accent to-accent-2",
-  },
-  {
-    icon: Activity,
-    title: "Registered Nurse",
-    type: "Full-time",
-    location: "Avissawella · Hanwella",
-    desc: "Diploma/Degree in Nursing with valid SLNC registration for wards & theatre.",
-    color: "from-rose to-pink-500",
-  },
-  {
-    icon: TestTubes,
-    title: "Medical Laboratory Technologist",
-    type: "Full-time",
-    location: "Avissawella",
-    desc: "MLT-qualified candidates for our 24/7 automated laboratory.",
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    icon: Pill,
-    title: "Pharmacist",
-    type: "Full-time",
-    location: "Avissawella · Hanwella",
-    desc: "Registered pharmacist for our round-the-clock in-house pharmacy.",
-    color: "from-amber-500 to-orange-500",
-  },
-  {
     icon: Users2,
-    title: "Reception / Customer Care",
-    type: "Full-time",
-    location: "All branches",
-    desc: "Front-desk professionals fluent in Sinhala & English. Hospitality background a plus.",
+    title: "Receptionist",
+    requirements: [
+      "G.C.E. A/L qualification",
+      "Good communication and interpersonal skills",
+      "Basic computer literacy",
+      "Pleasant personality with a customer-focused attitude",
+    ],
     color: "from-violet-500 to-fuchsia-500",
   },
   {
+    icon: TestTubes,
+    title: "Phlebotomist",
+    requirements: [
+      "Qualification in Nursing",
+      "Previous experience in blood collection will be an added advantage",
+      "Good patient-handling and communication skills",
+      "Ability to work responsibly and maintain proper safety standards",
+    ],
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
     icon: Briefcase,
-    title: "Administrative Officer",
-    type: "Full-time",
-    location: "Avissawella",
-    desc: "Strong organisational and communication skills. Experience in healthcare preferred.",
+    title: "Secretary",
+    requirements: [
+      "G.C.E. A/L qualification",
+      "Good written and verbal communication skills",
+      "Computer literacy and proficiency in MS Office",
+      "Excellent organizational and interpersonal skills",
+    ],
     color: "from-sky-500 to-blue-500",
+  },
+  {
+    icon: Activity,
+    title: "Maintenance Assistant",
+    requirements: [
+      "Should have studied at a Technical College at a basic level",
+      "Basic knowledge of maintenance and repair work",
+      "Ability to handle general maintenance duties responsibly",
+      "Previous experience will be an added advantage",
+    ],
+    color: "from-amber-500 to-orange-500",
+  },
+  {
+    icon: Stethoscope,
+    title: "Channeling Nurse",
+    requirements: [
+      "Qualified Nurse with relevant professional qualifications",
+      "Previous experience in a hospital / channeling environment will be an added advantage",
+      "Good patient-care and communication skills",
+    ],
+    color: "from-rose to-pink-500",
   },
 ];
 
@@ -201,18 +207,14 @@ export default function CareersPage() {
                   >
                     <job.icon size={22} />
                   </div>
-                  <h3 className="text-lg font-bold text-primary mb-1">{job.title}</h3>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted mb-3">
-                    <span className="inline-flex items-center gap-1">
-                      <Briefcase size={12} /> {job.type}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin size={12} /> {job.location}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted flex-1">{job.desc}</p>
+                  <h3 className="text-lg font-bold text-primary mb-3">{job.title}</h3>
+                  <ul className="text-sm text-muted flex-1 space-y-1.5 list-disc pl-4 marker:text-accent/50">
+                    {job.requirements.map((req, i) => (
+                      <li key={i}>{req}</li>
+                    ))}
+                  </ul>
                   <a
-                    href={`mailto:${careersEmail}?subject=Application — ${encodeURIComponent(job.title)}`}
+                    href="mailto:gomezhospital.careers@gmail.com?subject=Job%20Application%20-%20Gomez%20Hospital"
                     className="inline-flex items-center gap-2 mt-5 text-accent font-semibold text-sm group-hover:gap-3 transition-all"
                   >
                     Apply Now <Mail size={14} />

@@ -244,3 +244,37 @@ export const doctors: Doctor[] = [
 ];
 
 export const specialties = Array.from(new Set(doctors.map((d) => d.specialty))).sort();
+
+export function normalizeSearch(value: string) {
+  return (value || "")
+    .toLowerCase()
+    .replace(/\./g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function getDoctorSuggestions(query: string, maxResults = 8): Doctor[] {
+  const q = normalizeSearch(query);
+  if (!q) return [];
+
+  const matches = doctors
+    .map((doctor) => {
+      const name = normalizeSearch(doctor.name);
+      
+      let score = -1;
+      
+      if (name.startsWith(q) || name.startsWith("dr " + q)) {
+        score = 3; // Highest priority: starts with query or starts with "dr " + query
+      } else if (name.includes(" " + q)) {
+        score = 2; // Medium priority: a word inside the name starts with the query
+      } else if (name.includes(q)) {
+        score = 1; // Lowest priority: contains the query elsewhere
+      }
+      
+      return { doctor, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return matches.slice(0, maxResults).map((item) => item.doctor);
+}

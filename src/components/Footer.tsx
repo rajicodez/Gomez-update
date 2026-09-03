@@ -18,7 +18,7 @@ export function Footer() {
               className="h-14 w-auto bg-white rounded-md p-1 mb-4"
             />
             <p className="text-sm leading-relaxed text-white/70 mb-6">
-              Your trusted partner in healthcare, providing world-class medical services with a
+              Your trusted partner in healthcare, providing excellent medical services with a
               personal touch. Excellence in patient care since {site.established}.
             </p>
             <h4 className="text-white font-semibold mb-3">Follow Us</h4>
@@ -121,7 +121,15 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 text-center text-xs text-white/60">
-          © {new Date().getFullYear()} Gomez Hospital Pvt Ltd. All rights reserved.
+          © {new Date().getFullYear()}{" "}
+          <a
+            href="https://www.kindforth.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            Who created this website?
+          </a>
         </div>
       </div>
     </footer>

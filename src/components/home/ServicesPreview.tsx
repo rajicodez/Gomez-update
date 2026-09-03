@@ -49,7 +49,14 @@ export function ServicesPreview() {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent" />
               </div>
               <div className="absolute bottom-0 inset-x-0 p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{s.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2 flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span>{s.title}</span>
+                  {(s.title === "Pharmacy Services" || s.title === "24 Hours Services (OPD)" || s.title === "Laboratory Services") && (
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-accent text-white px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
+                      24 / 7
+                    </span>
+                  )}
+                </h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-sm text-accent-tint group-hover:gap-3 transition-all">
                     Explore <ArrowRight size={14} />

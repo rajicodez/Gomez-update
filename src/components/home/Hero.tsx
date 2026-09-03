@@ -6,7 +6,7 @@ import { BookingButton } from "@/components/BookingButton";
 const trustStats = [
   { value: "35+", label: "Years" },
   { value: "40+", label: "Specialists" },
-  { value: "24/7", label: "Open OPD", icon: Stethoscope },
+  { value: "24/7", label: "Open", icon: Stethoscope },
 ];
 
 export function Hero() {
