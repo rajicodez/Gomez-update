@@ -49,6 +49,6 @@ export const clinics: Clinic[] = [
     id: "dental",
     name: "Dental",
     icon: Stethoscope, 
-    doctor: null,
+    doctor: "Dr. Gayathri",
   },
 ];
