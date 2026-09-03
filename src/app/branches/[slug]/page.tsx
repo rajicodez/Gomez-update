@@ -1,9 +1,36 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { MapPin, Phone, Clock, FlaskConical } from "lucide-react";
+import { 
+  MapPin, Phone, Clock, FlaskConical,
+  Activity, HeartPulse, ScanLine, TestTubes, Pill, Eye, Ambulance, Hospital, Stethoscope, FileText, Brain, Users, Home, Shield
+} from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { BranchDoctorTable } from "@/components/BranchDoctorTable";
 import { branches } from "@/data/branches";
+
+const hanwellaServices = [
+  { name: "Emergency Treatment Unit (ETU)", icon: Activity },
+  { name: "Outpatient Department (OPD)", hours: "8:00 AM – 11:00 PM", icon: Stethoscope },
+  { name: "X-Ray Services", hours: "9:00 AM – 8:00 PM", icon: ScanLine },
+  { name: "Laboratory Services", hours: "7:00 AM – 8:00 PM", icon: TestTubes },
+  { name: "Pharmacy Services", hours: "7:00 AM – 11:00 PM", icon: Pill },
+  { name: "Specialist Doctor Consultation Services", icon: Users },
+  { name: "Psychological Counselling", icon: Brain },
+  { name: "Homeopathy Clinic", icon: Hospital },
+  { name: "Physiotherapy Services", icon: Activity },
+  { name: "Family Planning Services", icon: Users },
+  { name: "Wound Care / Treatment Unit", icon: Activity },
+  { name: "Home Nursing Service", icon: Home },
+  { name: "Ultrasound Scanning", icon: ScanLine },
+  { name: "Echocardiography", icon: HeartPulse },
+  { name: "ECG Services", icon: Activity },
+  { name: "Eye Examination", icon: Eye },
+  { name: "Ambulance Service", icon: Ambulance },
+  { name: "Optical / Spectacles Services", icon: Eye },
+  { name: "Health Protection Services", icon: Shield },
+  { name: "Mobile Medical Camps", icon: Hospital },
+  { name: "Medical Examination Certificates", icon: FileText },
+];
 
 export function generateStaticParams() {
   return branches.map((b) => ({ slug: b.slug }));
@@ -102,6 +129,30 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
                   ))}
                 </ul>
               </div>
+
+              {branch.slug === "hanwella" && (
+                <div className="bg-surface border border-border rounded-2xl p-6">
+                  <h3 className="font-bold text-primary mb-4 flex items-center gap-2">
+                    <Activity size={18} className="text-accent" /> Services Available
+                  </h3>
+                  <ul className="space-y-3 text-sm">
+                    {hanwellaServices.map((service, idx) => {
+                      const Icon = service.icon;
+                      return (
+                        <li key={idx} className="flex justify-between items-start gap-3 py-1.5 border-b border-border/40 last:border-0">
+                          <span className="font-medium text-primary flex items-start gap-2.5">
+                            <Icon size={16} className="text-accent shrink-0 mt-0.5" /> 
+                            {service.name}
+                          </span>
+                          {service.hours && (
+                            <span className="font-semibold text-accent text-xs whitespace-nowrap bg-accent/10 px-1.5 py-0.5 rounded shrink-0">{service.hours.replace(":00 AM", " AM").replace(":00 PM", " PM").replace(" AM – ", "–").replace(" PM", "")}</span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
 
               <div className="bg-surface border border-border rounded-2xl overflow-hidden">
                 <div className="p-4 flex items-center gap-2 font-bold text-primary">

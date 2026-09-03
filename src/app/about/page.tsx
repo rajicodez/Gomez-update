@@ -20,13 +20,13 @@ const directors: {
     role: "Chairman",
     subtitle: "Family Physician",
     qualifications: ["MBBS, DFM, MCGP"],
-    image: "/images/chairman 1.jpg",
+    image: "/images/chairman .jpg",
   },
   {
     name: "Dr. Sandamali Weerasinghe",
     role: "Managing Director",
     qualifications: ["MBBS DFM MCGP", "Reg.24488", "MBA (Hospital & Health Services)"],
-    image: "/images/managing.jpeg",
+    image: "/images/managing4.jpg",
   },
   {
     name: "Mrs. Diana Weerasinghe",
@@ -43,7 +43,6 @@ const directors: {
 
 const management = [
   { name: "Mr. L.D. Jayasekara", role: "General Manager", image: "" },
-  { name: "", role: "Matron", image: "" },
   { name: "Ms. Hasala Perera", role: "HR Manager", image: "" },
   { name: "Mr. Milan Ariyarathne", role: "Accountant", image: "" },
 ];

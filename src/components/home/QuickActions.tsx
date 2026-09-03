@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
@@ -9,7 +9,7 @@ import {
   Calendar,
   ChevronDown,
 } from "lucide-react";
-import { specialties } from "@/data/doctors";
+import { specialties, getDoctorSuggestions } from "@/data/doctors";
 import { clinics } from "@/data/clinics";
 
 export function QuickActions() {
@@ -17,6 +17,56 @@ export function QuickActions() {
   const [specialty, setSpecialty] = useState("");
   const [name, setName] = useState("");
   const [expandedClinic, setExpandedClinic] = useState<string | null>(null);
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setActiveIndex(-1);
+  }, [name]);
+
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const suggestions = useMemo(() => {
+    return getDoctorSuggestions(name);
+  }, [name]);
+
+  const handleSelectSuggestion = (doctorName: string) => {
+    setName(doctorName);
+    setShowDropdown(false);
+    const params = new URLSearchParams();
+    if (specialty) params.set("specialty", specialty);
+    params.set("q", doctorName);
+    router.push(`/doctors${params.toString() ? `?${params}` : ""}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showDropdown || !name) return;
+    
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev > 0 ? prev - 1 : -1));
+    } else if (e.key === "Enter") {
+      if (activeIndex >= 0 && suggestions[activeIndex]) {
+        e.preventDefault();
+        handleSelectSuggestion(suggestions[activeIndex].name);
+      }
+    } else if (e.key === "Escape") {
+      setShowDropdown(false);
+    }
+  };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +86,7 @@ export function QuickActions() {
               onSubmit={onSubmit}
               className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-3 items-stretch"
             >
-              <div className="relative">
+              <div className="relative" ref={searchContainerRef}>
                 <Search
                   size={16}
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-muted"
@@ -44,11 +94,43 @@ export function QuickActions() {
                 <input
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setShowDropdown(true);
+                  }}
+                  onFocus={() => setShowDropdown(true)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Search Doctor Name"
                   className="w-full pl-11 pr-4 py-3 rounded-full border border-border bg-white text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
                   suppressHydrationWarning
                 />
+                
+                {showDropdown && name.trim() !== "" && (
+                  <div className="absolute top-full mt-2 left-0 w-full bg-white border border-border rounded-2xl shadow-xl z-50 overflow-hidden py-2">
+                    {suggestions.length > 0 ? (
+                      <ul className="max-h-[300px] overflow-y-auto">
+                        {suggestions.map((s, i) => (
+                          <li key={s.name}>
+                            <button
+                              type="button"
+                              onClick={() => handleSelectSuggestion(s.name)}
+                              onMouseEnter={() => setActiveIndex(i)}
+                              className={`w-full text-left px-5 py-2.5 text-sm transition-colors ${
+                                i === activeIndex
+                                  ? "bg-accent-soft text-accent font-medium"
+                                  : "text-primary hover:bg-accent-soft hover:text-accent"
+                              }`}
+                            >
+                              {s.name}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="px-5 py-3 text-sm text-muted">No doctors found</div>
+                    )}
+                  </div>
+                )}
               </div>
               <div className="relative">
                 <Stethoscope

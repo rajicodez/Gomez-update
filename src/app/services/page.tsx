@@ -39,7 +39,14 @@ export default function ServicesPage() {
                 <div className="w-14 h-14 rounded-2xl bg-accent-soft text-accent flex items-center justify-center mb-4">
                   <s.icon size={26} />
                 </div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-3">{s.title}</h2>
+                <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-3 flex flex-wrap items-center gap-3">
+                  <span>{s.title}</span>
+                  {(s.title === "Pharmacy Services" || s.title === "24 Hours Services (OPD)" || s.title === "Laboratory Services") && (
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider bg-accent text-white px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
+                      24 / 7
+                    </span>
+                  )}
+                </h2>
                 <p className="text-muted mb-6 leading-relaxed">{s.description}</p>
 
                 {s.doctors && s.doctors.length > 0 && (
