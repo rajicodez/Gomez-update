@@ -39,8 +39,8 @@ export function Header() {
             <Image
               src="/images/gomez_logo.png"
               alt="Gomez Hospital"
-              width={400}
-              height={400}
+              width={3776}
+              height={2250}
               className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2"
               priority
             />
