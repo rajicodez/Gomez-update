@@ -44,7 +44,7 @@ export function Header() {
             priority
           />
           <div className="flex min-w-0 flex-col justify-center">
-            <div className="truncate font-['Times_New_Roman',Times,serif] text-[32px] lg:text-[44px] font-bold text-[#0056b5] tracking-[-0.025em] leading-none sm:mb-0.5 lg:mb-1">
+            <div className="whitespace-nowrap font-['Times_New_Roman',Times,serif] text-[32px] lg:text-[44px] font-bold text-[#0056b5] tracking-[-0.025em] leading-[1.1] sm:mb-0.5 lg:mb-1">
               {site.name}
             </div>
             <div className="hidden sm:block text-xs font-semibold text-primary/80 leading-none mb-1 lg:mb-1">Awissawella</div>

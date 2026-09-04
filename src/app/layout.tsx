@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Sinhala } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { TopBar } from "@/components/TopBar";
 import { Header } from "@/components/Header";
@@ -54,6 +56,8 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <MobileBottomBar />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
