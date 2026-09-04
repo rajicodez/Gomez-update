@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navLinks, site } from "@/data/site";
+import { navLinks } from "@/data/site";
 import { BookingButton } from "@/components/BookingButton";
 
 export function Header() {
@@ -34,23 +34,16 @@ export function Header() {
       }`}
     >
       <div className="max-w-[88rem] mx-auto flex items-center justify-between px-4 sm:px-6 h-16 lg:h-20">
-        <Link href="/" className="flex items-center gap-3 lg:gap-4" onClick={() => setOpen(false)}>
-          <Image
-            src="/images/gomez_logo_1.png"
-            alt="Gomez Hospital Logo"
-            width={80}
-            height={80}
-            className="h-12 lg:h-[72px] w-auto shrink-0 transition-all"
-            priority
-          />
-          <div className="flex min-w-0 flex-col justify-center">
-            <div className="whitespace-nowrap font-['Times_New_Roman',Times,serif] text-[32px] lg:text-[44px] font-bold text-[#0056b5] tracking-[-0.025em] leading-[1.1] sm:mb-0.5 lg:mb-1 lg:translate-y-1">
-              {site.name}
-            </div>
-            <div className="hidden sm:block text-xs font-semibold text-primary/80 leading-none mb-1 lg:mb-1">Awissawella</div>
-            <div className="hidden sm:block text-[10px] lg:text-[9px] font-semibold uppercase tracking-[0.1em] lg:tracking-[0.14em] text-muted leading-none">
-              Est. {site.established} · {site.tagline}
-            </div>
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <div className="relative h-12 w-[150px] lg:h-[72px] lg:w-[220px] shrink-0 overflow-hidden">
+            <Image
+              src="/images/gomez_logo.png"
+              alt="Gomez Hospital"
+              width={400}
+              height={400}
+              className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2"
+              priority
+            />
           </div>
         </Link>
 
