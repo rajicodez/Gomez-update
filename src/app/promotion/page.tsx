@@ -1,10 +1,12 @@
 import { PromotionGroups } from "@/components/PromotionGroups";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Promotions & Discounts — Gomez Hospital",
+export const metadata = createPageMetadata({
+  title: "Healthcare Promotions & Discounts | Gomez Hospital",
   description:
-    "Explore Gomez Hospital discounts across laboratory, pharmacy and channeling services.",
-};
+    "View current Gomez Hospital promotions and discounts for laboratory, pharmacy and specialist channeling services in Avissawella.",
+  path: "/promotion",
+});
 
 export default function PromotionPage() {
   return (

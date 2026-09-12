@@ -2,11 +2,14 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { healthPackages } from "@/data/packages";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Health Packages — Gomez Hospital",
-  description: "Comprehensive health checkup packages: General, Cardiac, Diabetic and Elder care. Click each for full details.",
-};
+export const metadata = createPageMetadata({
+  title: "Health Checkup Packages in Avissawella | Gomez Hospital",
+  description:
+    "Compare Gomez Hospital health checkup packages for general wellness, cardiac health, diabetes monitoring and older adults in Avissawella.",
+  path: "/health-packages",
+});
 
 export default function PackagesPage() {
   return (

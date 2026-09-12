@@ -7,6 +7,7 @@ import {
 import { PageHero } from "@/components/PageHero";
 import { BranchDoctorTable } from "@/components/BranchDoctorTable";
 import { branches } from "@/data/branches";
+import { createPageMetadata } from "@/lib/seo";
 
 const hanwellaServices = [
   { name: "Emergency Treatment Unit (ETU)", icon: Activity },
@@ -40,10 +41,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const branch = branches.find((b) => b.slug === slug);
   if (!branch) return {};
-  return {
-    title: `${branch.name} — Gomez Hospital`,
-    description: branch.description,
-  };
+  return createPageMetadata({
+    title: `${branch.name} | Gomez Hospital`,
+    description: `${branch.description} Find contact details, services and visiting specialists.`,
+    path: `/branches/${branch.slug}`,
+  });
 }
 
 export default async function BranchPage({ params }: { params: Promise<{ slug: string }> }) {

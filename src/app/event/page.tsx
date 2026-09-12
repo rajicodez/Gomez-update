@@ -1,11 +1,13 @@
 import { EventCard } from "@/components/EventCard";
 import { events } from "@/data/events";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Events & Activities — Gomez Hospital",
+export const metadata = createPageMetadata({
+  title: "Health Events & Community Activities | Gomez Hospital",
   description:
-    "Hospital events, health camps, awareness seminars, and community activities at Gomez Hospital.",
-};
+    "Discover Gomez Hospital health camps, awareness sessions and community healthcare activities in and around Avissawella.",
+  path: "/event",
+});
 
 export default function EventPage() {
   return (

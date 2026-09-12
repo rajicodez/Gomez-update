@@ -2,11 +2,14 @@ import { Suspense } from "react";
 import { PageHero } from "@/components/PageHero";
 import { DoctorList } from "@/components/DoctorList";
 import { doctors, specialties } from "@/data/doctors";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Meet The Specialist — Gomez Hospital",
-  description: "40+ renowned consultants offering specialized care. Search and find your doctor by name or specialty.",
-};
+export const metadata = createPageMetadata({
+  title: "Doctors in Avissawella | Gomez Hospital Specialist Channeling",
+  description:
+    "Find specialist doctors at Gomez Hospital Avissawella by name or specialty and book a channeling appointment for trusted medical care.",
+  path: "/doctors",
+});
 
 export default function DoctorsPage() {
   return (

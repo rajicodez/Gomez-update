@@ -15,12 +15,14 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { site } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Careers — Gomez Hospital",
+export const metadata = createPageMetadata({
+  title: "Careers at Gomez Hospital | Healthcare Jobs in Avissawella",
   description:
-    "Join our team at Gomez Hospital. Explore career opportunities for doctors, nurses, lab technicians and support staff.",
-};
+    "Explore healthcare career opportunities at Gomez Hospital Avissawella for clinical, laboratory, administrative and support professionals.",
+  path: "/careers",
+});
 
 const openings = [
   {
