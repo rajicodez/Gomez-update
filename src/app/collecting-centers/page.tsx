@@ -1,11 +1,14 @@
 import { MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { collectingCenters } from "@/data/centers";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Collecting Centers — Gomez Hospital",
-  description: "Our island-wide network of sample collecting centers across Sri Lanka.",
-};
+export const metadata = createPageMetadata({
+  title: "Laboratory Sample Collection Centers | Gomez Hospital",
+  description:
+    "Find Gomez Hospital laboratory sample collection centers and contact numbers for convenient diagnostic testing services in Sri Lanka.",
+  path: "/collecting-centers",
+});
 
 export default function CentersPage() {
   return (

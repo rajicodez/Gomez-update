@@ -2,6 +2,7 @@
 
 import { Phone, Mail, Clock3 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { site } from "@/data/site";
 
 export function TopBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +25,7 @@ export function TopBar() {
       {/* Compact mobile call actions */}
       <div className="md:hidden flex w-full px-3 py-2">
         <a
-          href="tel:036720200"
+          href={`tel:${site.ambulancePhone.replace(/\s/g, "")}`}
           className="flex w-full min-w-0 justify-center items-center gap-2 bg-[#dc2626] hover:bg-[#ef4444] active:scale-[0.98] transition-all text-white px-2.5 py-2 rounded-xl shadow-sm"
         >
           <div className="bg-white/20 p-2 rounded-full shrink-0">
@@ -35,7 +36,7 @@ export function TopBar() {
               Emergency & Ambulance
             </span>
             <span className="mt-1 text-[13px] font-bold leading-none whitespace-nowrap">
-              036 720 200
+              {site.ambulancePhone}
             </span>
           </div>
         </a>
@@ -47,7 +48,7 @@ export function TopBar() {
           <div className="flex items-center gap-3">
             {/* Desktop Emergency & Ambulance */}
             <a
-              href="tel:036720200"
+              href={`tel:${site.ambulancePhone.replace(/\s/g, "")}`}
               className="group flex items-center gap-2.5 bg-[#dc2626] hover:bg-[#ef4444] text-white px-3.5 py-1.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="bg-white/20 p-1.5 rounded-full group-hover:scale-110 transition-transform">
@@ -55,7 +56,7 @@ export function TopBar() {
               </div>
               <div className="flex flex-col items-start justify-center pr-1">
                 <span className="text-[9px] font-bold uppercase tracking-wider text-white/90 mb-0.5 leading-none">Emergency & Ambulance</span>
-                <span className="text-[13px] font-bold leading-none">036 720 200</span>
+                <span className="text-[13px] font-bold leading-none">{site.ambulancePhone}</span>
               </div>
             </a>
           </div>

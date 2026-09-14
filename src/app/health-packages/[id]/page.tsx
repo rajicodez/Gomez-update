@@ -4,6 +4,7 @@ import { ArrowLeft, Check, Calendar, Phone } from "lucide-react";
 import { healthPackages } from "@/data/packages";
 import { site } from "@/data/site";
 import { BookingButton } from "@/components/BookingButton";
+import { createPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return healthPackages.map((p) => ({ id: p.id }));
@@ -13,10 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const pkg = healthPackages.find((p) => p.id === id);
   if (!pkg) return {};
-  return {
-    title: `${pkg.title} — ${pkg.subtitle} | Gomez Hospital`,
-    description: `${pkg.subtitle}. ${pkg.ideal}. Price: ${pkg.price}.`,
-  };
+  return createPageMetadata({
+    title: `${pkg.title} – ${pkg.subtitle} | Gomez Hospital`,
+    description: `${pkg.subtitle} at Gomez Hospital Avissawella. ${pkg.ideal}. View included tests and package details.`,
+    path: `/health-packages/${pkg.id}`,
+  });
 }
 
 export default async function PackageDetailPage({

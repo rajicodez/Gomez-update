@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, Clock, Pill, Ambulance } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 
 type ContactLine = string | { text: string; href: string };
 
@@ -11,10 +12,12 @@ type ContactCard = {
   lines: ContactLine[];
 };
 
-export const metadata = {
-  title: "Contact Us — Gomez Hospital",
-  description: "Get in touch with Gomez Hospital. Visit, call, or send us a message. Available 24/7 for emergencies.",
-};
+export const metadata = createPageMetadata({
+  title: "Contact Gomez Hospital Avissawella | Phone, Email & Location",
+  description:
+    "Contact Gomez Hospital in Avissawella for appointments, hospital services, pharmacy enquiries and 24/7 emergency or ambulance assistance.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

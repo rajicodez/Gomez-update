@@ -2,10 +2,14 @@ import Image from "next/image";
 import { Check, UserRound, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { services } from "@/data/services";
-export const metadata = {
-  title: "Services — Gomez Hospital",
-  description: "Comprehensive medical services: specialist consultations, inpatient care, emergency, surgery, maternity, diagnostics and more.",
-};
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Medical Services in Avissawella | Gomez Hospital",
+  description:
+    "Explore Gomez Hospital services in Avissawella, including specialist channeling, emergency care, laboratory, pharmacy, diagnostics, surgery and inpatient care.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

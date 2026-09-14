@@ -1,5 +1,7 @@
 export const site = {
   name: "Gomez Hospital",
+  url: "https://gomezhospital.com",
+  logo: "/images/gomez_logo.png",
   tagline: "We Care Always!",
   established: "1986",
   mainAddress: "No.63, Colombo Road, Avissawella",

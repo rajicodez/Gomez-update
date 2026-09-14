@@ -36,9 +36,9 @@ export function Recognitions() {
           <div className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-2">
             Trusted & Recognized
           </div>
-          <h3 className="text-xl lg:text-2xl font-bold text-primary">
+          <h2 className="text-xl lg:text-2xl font-bold text-primary">
             A Legacy Built on Trust
-          </h3>
+          </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           {items.map((it) => (

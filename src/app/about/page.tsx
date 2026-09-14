@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { Eye, Target, User } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About Us — Gomez Hospital",
-  description: "Founded in 1986 by Dr. R. P. Weerasinghe. Excellence in healthcare for over 30 years.",
-};
+export const metadata = createPageMetadata({
+  title: "About Gomez Hospital Avissawella | Our History & Team",
+  description:
+    "Learn about Gomez Hospital Avissawella, its history, leadership, medical team and commitment to quality healthcare in Seethawakapura.",
+  path: "/about",
+});
 
 const directors: {
   name: string;
