@@ -29,7 +29,7 @@ const directors: {
     name: "Dr. Sandamali Weerasinghe",
     role: "Managing Director",
     qualifications: ["MBBS DFM MCGP", "Reg.24488", "MBA (Hospital & Health Services)"],
-    image: "/images/managing4.jpg",
+    image: "/images/managing4.jpeg",
   },
   {
     name: "Mrs. Diana Weerasinghe",
