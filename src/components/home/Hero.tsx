@@ -15,7 +15,7 @@ export function Hero() {
       {/* Full-bleed hero image — extends behind transparent navbar */}
       <div className="absolute inset-0">
         <Image
-          src="/images/2021-05-11.jpg"
+          src="/images/hero imag.png"
           alt="Gomez Hospital"
           fill
           priority

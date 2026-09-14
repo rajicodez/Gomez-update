@@ -49,15 +49,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/images/gomez_logo.png", type: "image/png" },
-    ],
-    shortcut: "/icon.png",
-    apple: "/apple-icon.png",
-  },
 };
 
 const hospitalJsonLd = {

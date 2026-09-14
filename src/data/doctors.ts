@@ -21,7 +21,7 @@ export const doctors: Doctor[] = [
   // --- Avissawella Base Hospital Specialists (from consultant list) ---
   {
     name: "Dr. Jagath Dalpadadu",
-    specialty: "VOG Specialist",
+    specialty: "Consultant Physician",
     hospital: "Avissawella Base Hospital",
     clinicDays: "Daily",
   },
