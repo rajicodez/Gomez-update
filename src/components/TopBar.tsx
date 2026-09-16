@@ -1,26 +1,12 @@
 "use client";
 
 import { Phone, Mail, Clock3 } from "lucide-react";
-import { useEffect, useState } from "react";
 import { site } from "@/data/site";
 
 export function TopBar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div
-      className={`relative z-50 w-full overflow-hidden bg-primary transition-[max-height,opacity,border-color] duration-300 ease-out ${
-        scrolled
-          ? "max-h-0 border-b border-transparent opacity-0"
-          : "max-h-[68px] md:max-h-[52px] border-b border-white/10 opacity-100"
-      }`}
-      aria-hidden={scrolled}
+      className="relative z-50 w-full overflow-hidden bg-primary max-h-[68px] md:max-h-[52px] border-b border-white/10"
     >
       {/* Compact mobile call actions */}
       <div className="md:hidden flex w-full px-3 py-2">

@@ -23,12 +23,12 @@ export function BranchesPreview() {
           </h2>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-[54rem] mx-auto">
           {branches.map((b) => (
             <Link
               key={b.slug}
               href={`/branches/${b.slug}`}
-              className="group relative bg-white border border-border rounded-3xl overflow-hidden hover:border-accent/40 transition-all shadow-sm lift"
+              className="group relative block bg-white border border-border rounded-3xl overflow-hidden hover:border-accent/40 transition-all shadow-sm lift"
             >
               <div className="aspect-[16/10] relative">
                 <Image
@@ -36,16 +36,16 @@ export function BranchesPreview() {
                   alt={b.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(min-width: 768px) 672px, 100vw"
+                  sizes="(min-width: 912px) 864px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
                 <div className="absolute top-4 left-4 bg-white/95 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
                   {b.shortName}
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-6 sm:p-8">
                 <h3 className="text-2xl font-bold mb-3 text-primary">{b.name}</h3>
-                <div className="space-y-2 text-sm text-muted mb-4">
+                <div className="space-y-2 sm:space-y-3 text-sm text-muted mb-4 sm:mb-6">
                   <div className="flex items-start gap-2">
                     <MapPin size={16} className="text-accent shrink-0 mt-0.5" />
                     <span>{b.address}</span>

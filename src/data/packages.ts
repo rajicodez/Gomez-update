@@ -19,7 +19,7 @@ export const healthPackages: HealthPackage[] = [
     subtitle: "General Health Checkup",
     descriptionSi:
       "දියවැඩියාව, කොලෙස්ටරෝල්, මුත්‍රා විෂබීජ, වකුගඩු ක්‍රියාකාරීත්වය, හෘද හා අක්මා රෝග හඳුනාගැනීම.",
-    price: "Rs. 20,000",
+    price: "Rs. 22,200",
     ideal: "Comprehensive screening for all adults",
     tests: [
       { en: "Full Blood Count (FBC)", si: "සම්පූර්ණ රුධිර පරීක්ෂණය" },
@@ -43,7 +43,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package B",
     subtitle: "Smart Health Check",
     descriptionSi: "අඩු වියදමින් අත්‍යාවශ්‍යම පරීක්ෂණ මගින් මූලික රෝග හඳුනාගැනීම.",
-    price: "Rs. 10,100",
+    price: "Rs. 12,200",
     ideal: "Essential checkup at an affordable price",
     tests: [
       { en: "Full Blood Count", si: "සම්පූර්ණ රුධිර පරීක්ෂණය" },
@@ -65,7 +65,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package C",
     subtitle: "Elder Basic Package",
     descriptionSi: "වයස අවුරුදු 50ට වැඩි පිරිස් සඳහා විශේෂයෙන් සකසන ලදී.",
-    price: "Rs. 15,960",
+    price: "Rs. 20,000",
     ideal: "Adults over 50 — basic screening",
     tests: [
       { en: "FBC / UFR / ESR", si: "මූලික රුධිර හා මුත්‍රා පරීක්ෂණ" },
@@ -85,7 +85,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package D",
     subtitle: "Elder Premium — Female",
     descriptionSi: "අවුරුදු 50ට වැඩි කාන්තා පාර්ශවය සඳහා විශේෂිතයි.",
-    price: "Rs. 42,000",
+    price: "Rs. 44,300",
     ideal: "Premium screening for women over 50",
     tests: [
       { en: "FBC / UFR / ESR", si: "මූලික පරීක්ෂණ" },
@@ -105,7 +105,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package E",
     subtitle: "Elder Premium — Male",
     descriptionSi: "අවුරුදු 50ට වැඩි පුරුෂ පාර්ශවය සඳහා විශේෂිතයි.",
-    price: "Rs. 33,660",
+    price: "Rs. 33,600",
     ideal: "Premium screening for men over 50",
     tests: [
       { en: "FBC / UFR / ESR", si: "මූලික පරීක්ෂණ" },
@@ -124,7 +124,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package F",
     subtitle: "Cardiac Basic",
     descriptionSi: "සියළුම වයස් කාණ්ඩවල හෘද රෝගීන් සඳහා විශේෂිතයි.",
-    price: "Rs. 21,500",
+    price: "Rs. 21,900",
     ideal: "Basic heart health screening",
     tests: [
       { en: "FBC / UFR", si: "රුධිර හා මුත්‍රා පරීක්ෂණ" },
@@ -143,7 +143,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package G",
     subtitle: "Cardiac Advance",
     descriptionSi: "හෘද රෝගීන් සඳහා පූර්ණ පරීක්ෂණ ඇතුලත් පැකේජය.",
-    price: "Rs. 31,500",
+    price: "Rs. 33,400",
     ideal: "Comprehensive cardiac evaluation",
     tests: [
       { en: "FBC / UFR", si: "මූලික පරීක්ෂණ" },
@@ -162,7 +162,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package H",
     subtitle: "Diabetic Basic",
     descriptionSi: "දියවැඩියා රෝගීන් සඳහා විශේෂිත මූලික පැකේජය.",
-    price: "Rs. 8,500",
+    price: "Rs. 9,000",
     ideal: "Essential diabetic monitoring",
     tests: [
       { en: "Fasting Blood Sugar", si: "රුධිර සීනි පරීක්ෂණය" },
@@ -181,7 +181,7 @@ export const healthPackages: HealthPackage[] = [
     title: "Package I",
     subtitle: "Diabetic Premium",
     descriptionSi: "දියවැඩියා රෝගීන් සඳහා පූර්ණ පරීක්ෂණ ඇතුලත් පැකේජය.",
-    price: "Rs. 16,200",
+    price: "Rs. 18,200",
     ideal: "Comprehensive diabetic evaluation",
     tests: [
       { en: "FBS / PPBS / HBA1C", si: "පූර්ණ සීනි පරීක්ෂණ" },

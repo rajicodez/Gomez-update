@@ -3,35 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { navLinks } from "@/data/site";
 import { BookingButton } from "@/components/BookingButton";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-  const overHero = pathname === "/" && !scrolled && !open;
 
   useEffect(() => {
     document.body.classList.toggle("no-scroll", open);
   }, [open]);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <header
-      className={`relative inset-x-0 z-40 transition-all duration-300 ${
-        overHero
-          ? "bg-transparent border-b border-transparent"
-          : "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
-      }`}
+      className="relative inset-x-0 z-40 bg-white shadow-sm border-b border-border"
     >
       <div className="max-w-[88rem] mx-auto flex items-center justify-between px-4 sm:px-6 h-16 lg:h-20">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>

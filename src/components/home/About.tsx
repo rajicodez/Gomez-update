@@ -19,7 +19,7 @@ export function About() {
         <div className="relative">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md">
             <Image
-              src="/images/2021-05-111.jpg"
+              src="/images/229.png"
               alt="Hospital exterior"
               fill
               className="object-cover"
