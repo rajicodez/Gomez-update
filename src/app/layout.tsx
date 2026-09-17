@@ -3,8 +3,7 @@ import { Inter, Noto_Sans_Sinhala } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { TopBar } from "@/components/TopBar";
-import { Header } from "@/components/Header";
+import { StickyHeader } from "@/components/StickyHeader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
@@ -104,10 +103,7 @@ export default function RootLayout({
             __html: JSON.stringify(hospitalJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <div className="sticky top-0 z-50 flex flex-col w-full">
-          <TopBar />
-          <Header />
-        </div>
+        <StickyHeader />
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFloat />

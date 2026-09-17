@@ -15,12 +15,12 @@ export function Hero() {
       {/* Full-bleed hero image — extends behind transparent navbar */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero imag.png"
+          src="/images/hero_crop.png"
           alt="Gomez Hospital"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[85%_top] lg:object-right-top"
+          className="object-cover object-[65%_15%] md:object-[70%_20%] lg:object-[75%_25%]"
         />
         {/* Desktop: left-to-right fade keeps text readable */}
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white from-35% via-white/40 via-50% to-transparent to-60%" />
