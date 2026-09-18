@@ -1,0 +1,253 @@
+{
+  "passed": true,
+  "publicPages": 20,
+  "doctorNames": 36,
+  "branchSpecialists": 31,
+  "packages": 9,
+  "internalLinks": 32,
+  "robots": "User-Agent: *\nAllow: /\n\nHost: https://gomezhospital.com\nSitemap: https://gomezhospital.com/sitemap.xml\n",
+  "pages": [
+    {
+      "path": "/",
+      "title": "Gomez Hospital Avissawella | Private Healthcare & Medical Services",
+      "canonical": "https://gomezhospital.com",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ]
+      ]
+    },
+    {
+      "path": "/about",
+      "title": "About Gomez Hospital Avissawella | Our History & Team",
+      "canonical": "https://gomezhospital.com/about",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/services",
+      "title": "Medical Services in Avissawella | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/services",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList",
+        "ItemList"
+      ]
+    },
+    {
+      "path": "/doctors",
+      "title": "Doctors in Avissawella | Gomez Hospital Specialist Channeling",
+      "canonical": "https://gomezhospital.com/doctors",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList",
+        "ItemList"
+      ]
+    },
+    {
+      "path": "/health-packages",
+      "title": "Health Checkup Packages in Avissawella | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/promotion",
+      "title": "Healthcare Promotions & Discounts | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/promotion",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/event",
+      "title": "Health Events & Community Activities | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/event",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/careers",
+      "title": "Careers at Gomez Hospital | Healthcare Jobs in Avissawella",
+      "canonical": "https://gomezhospital.com/careers",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Gomez Hospital Avissawella | Phone, Email & Location",
+      "canonical": "https://gomezhospital.com/contact",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/collecting-centers",
+      "title": "Laboratory Sample Collection Centers | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/collecting-centers",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/branches/hanwella",
+      "title": "Hanwella Medical Center | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/branches/hanwella",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList",
+        "MedicalClinic"
+      ]
+    },
+    {
+      "path": "/health-packages/a",
+      "title": "Package A – General Health Checkup | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/a",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/b",
+      "title": "Package B – Smart Health Check | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/b",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/c",
+      "title": "Package C – Elder Basic Package | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/c",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/d",
+      "title": "Package D – Elder Premium — Female | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/d",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/e",
+      "title": "Package E – Elder Premium — Male | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/e",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/f",
+      "title": "Package F – Cardiac Basic | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/f",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/g",
+      "title": "Package G – Cardiac Advance | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/g",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/h",
+      "title": "Package H – Diabetic Basic | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/h",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/health-packages/i",
+      "title": "Package I – Diabetic Premium | Gomez Hospital",
+      "canonical": "https://gomezhospital.com/health-packages/i",
+      "schemas": [
+        [
+          "Hospital",
+          "WebSite"
+        ],
+        "BreadcrumbList"
+      ]
+    }
+  ]
+}

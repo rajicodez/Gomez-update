@@ -23,7 +23,7 @@ export function Header() {
           <div className="relative h-12 w-[150px] lg:h-[72px] lg:w-[220px] shrink-0 overflow-hidden">
             <Image
               src="/images/gomez_logo.png"
-              alt="Gomez Hospital"
+              alt="Gomez Hospital logo"
               width={3776}
               height={2250}
               className="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2"

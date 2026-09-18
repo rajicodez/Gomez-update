@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { MapPin, Phone, Mail, Clock, Pill, Ambulance } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
@@ -22,6 +23,7 @@ export const metadata = createPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Contact", path: "/contact" }]} />
       <PageHero
         eyebrow="Get In Touch"
         title="Contact Us"
@@ -75,7 +77,7 @@ export default function ContactPage() {
                 <div className="w-12 h-12 rounded-xl bg-accent-soft text-accent flex items-center justify-center mb-4">
                   <c.icon size={22} />
                 </div>
-                <h3 className="font-bold text-primary mb-2">{c.title}</h3>
+                <h2 className="font-bold text-primary mb-2">{c.title}</h2>
                 {c.lines.map((l) =>
                   typeof l === "string" ? (
                     <div key={l} className="text-sm text-muted">
@@ -99,6 +101,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="rounded-2xl overflow-hidden border border-border min-h-[400px]">
               <iframe
+                title="Gomez Hospital Avissawella location map"
                 src={site.mapEmbed}
                 width="100%"
                 height="100%"
@@ -109,7 +112,7 @@ export default function ContactPage() {
               />
             </div>
             <div className="bg-surface border border-border rounded-2xl p-6 lg:p-8">
-              <h3 className="text-2xl font-bold text-primary mb-2">Send a Message</h3>
+              <h2 className="text-2xl font-bold text-primary mb-2">Send a Message</h2>
               <p className="text-muted mb-6">
                 Fill out the form and our team will get back to you within 24 hours.
               </p>

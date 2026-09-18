@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Image from "next/image";
 import { Eye, Target, User } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
@@ -53,6 +54,7 @@ const management = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "About Us", path: "/about" }]} />
       <PageHero
         eyebrow="About Us"
         title="Our Story"
@@ -102,7 +104,7 @@ export default function AboutPage() {
             <div className="w-14 h-14 rounded-2xl bg-accent-soft text-accent flex items-center justify-center mb-4">
               <Eye size={26} />
             </div>
-            <h3 className="text-2xl font-bold text-primary mb-3">Our Vision</h3>
+            <h2 className="text-2xl font-bold text-primary mb-3">Our Vision</h2>
             <p className="text-muted leading-relaxed">
               To be the leading private healthcare provider in Seethawakapura, delivering
               compassionate, high-quality, and innovative medical care, ensuring excellence in
@@ -113,7 +115,7 @@ export default function AboutPage() {
             <div className="w-14 h-14 rounded-2xl bg-accent-soft text-accent flex items-center justify-center mb-4">
               <Target size={26} />
             </div>
-            <h3 className="text-2xl font-bold text-primary mb-3">Our Mission</h3>
+            <h2 className="text-2xl font-bold text-primary mb-3">Our Mission</h2>
             <p className="text-muted leading-relaxed">
               Our mission is to provide high-quality, affordable, and patient-centered healthcare by
               integrating advanced medical technology, skilled professionals, and compassionate

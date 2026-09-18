@@ -33,11 +33,11 @@ export function DoctorCard({ doctor: d, index }: Props) {
               #{String(index + 1).padStart(2, "0")}
             </div>
           )}
-          <h3 className="font-bold text-primary leading-tight mt-1">
+          <h2 className="font-bold text-primary leading-tight mt-1">
             <BookingButton className="text-left hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
               {d.name}
             </BookingButton>
-          </h3>
+          </h2>
           <div
             className={`mt-1.5 inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full ${
               isFemale

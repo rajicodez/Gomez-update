@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { BreadcrumbJsonLd, JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { DoctorList } from "@/components/DoctorList";
 import { doctors, specialties } from "@/data/doctors";
@@ -14,6 +14,20 @@ export const metadata = createPageMetadata({
 export default function DoctorsPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Doctors", path: "/doctors" }]} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "ItemList",
+        name: "Gomez Hospital specialist doctors",
+        itemListElement: doctors.map((doctor, index) => ({
+          "@type": "ListItem", position: index + 1,
+          item: {
+            "@type": "Person", name: doctor.name, jobTitle: doctor.specialty,
+            affiliation: { "@type": "Organization", name: doctor.hospital },
+            description: [doctor.specialty, ...(doctor.credentials ?? []),
+              "Consultations at Gomez Hospital Avissawella: " + doctor.clinicDays].join(". "),
+          },
+        })),
+      }} />
       <PageHero
         eyebrow="Our Team"
         title="Meet The Specialist"
@@ -21,9 +35,7 @@ export default function DoctorsPage() {
       />
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Suspense fallback={<div className="text-center py-16 text-muted">Loading...</div>}>
             <DoctorList doctors={doctors} specialties={specialties} />
-          </Suspense>
         </div>
       </section>
     </>

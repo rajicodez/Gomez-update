@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { branches } from "@/data/branches";
 import { healthPackages } from "@/data/packages";
-import { siteUrl } from "@/lib/seo";
+import { canonicalUrl } from "@/lib/seo";
 
 const publicRoutes = [
   "/",
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...healthPackages.map((healthPackage) => `/health-packages/${healthPackage.id}`),
   ];
 
-  return routes.map((route) => ({
-    url: new URL(route, siteUrl).toString(),
+  return [...new Set(routes)].map((route) => ({
+    url: canonicalUrl(route),
   }));
 }

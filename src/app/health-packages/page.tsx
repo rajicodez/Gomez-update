@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
@@ -14,6 +15,7 @@ export const metadata = createPageMetadata({
 export default function PackagesPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Health Packages", path: "/health-packages" }]} />
       <PageHero
         eyebrow="Health Checkups"
         title="Health Packages"
@@ -34,7 +36,7 @@ export default function PackagesPage() {
                     {p.badge}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-primary leading-tight">{p.title}</h3>
+                    <h2 className="font-bold text-primary leading-tight">{p.title}</h2>
                     <p className="text-sm text-accent font-medium mt-0.5">{p.subtitle}</p>
                   </div>
                 </div>

@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <Image
               src="/images/gomez_logo_.png"
-              alt="Gomez Hospital"
+              alt="Gomez Hospital logo"
               width={64}
               height={64}
               className="h-14 w-auto bg-white rounded-md p-1 mb-4"
@@ -32,13 +32,12 @@ export function Footer() {
               >
                 <FaFacebook className="w-6 h-6" />
               </a>
-              <a
-                href="#"
+              <span
                 aria-label="Instagram"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-accent hover:scale-110 flex items-center justify-center transition-all duration-200 text-white hover:text-white"
               >
                 <FaInstagram className="w-6 h-6" />
-              </a>
+              </span>
             </div>
           </div>
 
