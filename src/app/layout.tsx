@@ -7,8 +7,9 @@ import { StickyHeader } from "@/components/StickyHeader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/data/site";
-import { createPageMetadata, siteUrl } from "@/lib/seo";
+import { createPageMetadata, defaultTitle, defaultDescription, siteUrl } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,11 +26,11 @@ const notoSansSinhala = Noto_Sans_Sinhala({
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   ...createPageMetadata({
-    title: "Gomez Hospital Avissawella | Private Healthcare & Medical Services",
-    description:
-      "Gomez Hospital in Avissawella provides trusted private healthcare, specialist consultations, laboratory, pharmacy, emergency, diagnostic and inpatient services.",
+    title: defaultTitle,
+    description: defaultDescription,
     path: "/",
   }),
+  title: { default: defaultTitle, template: "%s | Gomez Hospital Avissawella" },
   applicationName: "Gomez Hospital",
   keywords: [
     "Gomez Hospital",
@@ -69,19 +70,16 @@ const hospitalJsonLd = {
     addressLocality: "Avissawella",
     addressCountry: "LK",
   },
-  openingHours: "Mo-Su 00:00-23:59",
   contactPoint: [
     {
       "@type": "ContactPoint",
       telephone: site.ambulancePhone,
       contactType: "emergency",
-      availableLanguage: ["English", "Sinhala"],
     },
     ...site.phones.map((phone) => ({
       "@type": "ContactPoint",
       telephone: phone,
       contactType: "customer service",
-      availableLanguage: ["English", "Sinhala"],
     })),
   ],
 };
@@ -97,12 +95,14 @@ export default function RootLayout({
         className="min-h-screen flex flex-col bg-white text-foreground pb-14 md:pb-0"
         suppressHydrationWarning
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(hospitalJsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@graph": [hospitalJsonLd, {
+            "@type": "WebSite", "@id": site.url + "/#website",
+            url: site.url, name: site.name, inLanguage: "en",
+            publisher: { "@id": hospitalJsonLd["@id"] },
+          }],
+        }} />
         <StickyHeader />
         <main className="flex-1">{children}</main>
         <Footer />

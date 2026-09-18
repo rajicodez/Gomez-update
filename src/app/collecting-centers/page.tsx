@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { collectingCenters } from "@/data/centers";
@@ -13,6 +14,7 @@ export const metadata = createPageMetadata({
 export default function CentersPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Sample Collection Centers", path: "/collecting-centers" }]} />
       <PageHero
         eyebrow="Sample Collection"
         title="Collecting Centers"
@@ -29,7 +31,7 @@ export default function CentersPage() {
                 <div className="w-12 h-12 rounded-xl bg-accent-soft text-accent flex items-center justify-center mb-4">
                   <MapPin size={22} />
                 </div>
-                <h3 className="font-bold text-primary mb-2">{c.name}</h3>
+                <h2 className="font-bold text-primary mb-2">{c.name}</h2>
                 <address className="not-italic text-sm text-muted leading-relaxed">
                   {c.address.map((line) => (
                     <div key={line}>{line}</div>

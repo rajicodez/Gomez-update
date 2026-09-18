@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FlaskConical, Pill, Stethoscope } from "lucide-react";
 import { PromotionCard } from "@/components/PromotionCard";
 import { promotionGroups } from "@/data/promotions";
@@ -24,7 +25,7 @@ export function PromotionGroups() {
                 id={`discounts-${group.id}`}
                 className="text-lg font-bold leading-snug text-primary sm:text-xl"
               >
-                {group.title}
+                <Link href={group.id === "channeling" ? "/doctors" : `/services#${group.id}-services`}>{group.title}</Link>
               </h3>
               <span className="hidden h-px flex-1 bg-border sm:block" aria-hidden="true" />
             </div>

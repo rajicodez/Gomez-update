@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { EventCard } from "@/components/EventCard";
 import { events } from "@/data/events";
 import { createPageMetadata } from "@/lib/seo";
@@ -12,6 +13,7 @@ export const metadata = createPageMetadata({
 export default function EventPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Events & Activities", path: "/event" }]} />
       <section className="pt-28 lg:pt-32 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <div className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-3">

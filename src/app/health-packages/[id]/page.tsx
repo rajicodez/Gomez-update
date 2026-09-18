@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Calendar, Phone } from "lucide-react";
@@ -13,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const pkg = healthPackages.find((p) => p.id === id);
-  if (!pkg) return {};
+  if (!pkg) notFound();
   return createPageMetadata({
     title: `${pkg.title} – ${pkg.subtitle} | Gomez Hospital`,
     description: `${pkg.subtitle} at Gomez Hospital Avissawella. ${pkg.ideal}. View included tests and package details.`,
@@ -32,6 +33,10 @@ export default async function PackageDetailPage({
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: "Health Packages", path: "/health-packages" },
+        { name: pkg.title, path: `/health-packages/${pkg.id}` },
+      ]} />
       <section className="relative pt-16 lg:pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-[#0d3055] text-white overflow-hidden">
         <div className="absolute inset-0 medical-pattern opacity-30" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">

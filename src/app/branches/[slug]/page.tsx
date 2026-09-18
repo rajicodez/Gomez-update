@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd, JsonLd } from "@/components/JsonLd";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { 
@@ -40,11 +41,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const branch = branches.find((b) => b.slug === slug);
-  if (!branch) return {};
+  if (!branch) notFound();
   return createPageMetadata({
     title: `${branch.name} | Gomez Hospital`,
     description: `${branch.description} Find contact details, services and visiting specialists.`,
     path: `/branches/${branch.slug}`,
+    image: branch.slug === "hanwella" ? "/images/Gomez-Hospital-Hanwella.jpg" : branch.image,
+    imageAlt: branch.name,
   });
 }
 
@@ -55,6 +58,17 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: branch.name, path: `/branches/${branch.slug}` }]} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "MedicalClinic",
+        "@id": "https://gomezhospital.com/branches/" + branch.slug + "#clinic",
+        name: branch.name, description: branch.description,
+        url: "https://gomezhospital.com/branches/" + branch.slug,
+        image: "https://gomezhospital.com" + branch.image,
+        telephone: branch.phones,
+        address: { "@type": "PostalAddress", streetAddress: branch.address, addressCountry: "LK" },
+        parentOrganization: { "@id": "https://gomezhospital.com/#hospital" },
+      }} />
       <PageHero
         eyebrow="Branch"
         title={branch.name}
@@ -82,9 +96,9 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
                   <Clock size={28} />
                 </div>
                 <div>
-                  <h3 className="text-xl lg:text-2xl font-bold text-primary leading-tight">
+                  <h2 className="text-xl lg:text-2xl font-bold text-primary leading-tight">
                     Outpatient Department (OPD)
-                  </h3>
+                  </h2>
                   <p className="text-muted mt-1.5 text-sm lg:text-base">
                     Open daily from 8:00 AM to 11:00 PM
                   </p>
@@ -161,6 +175,7 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
                   <FlaskConical size={18} className="text-accent" /> Location
                 </div>
                 <iframe
+                  title={branch.name + " location map"}
                   src={branch.mapEmbed}
                   width="100%"
                   height="280"

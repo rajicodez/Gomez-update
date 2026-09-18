@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import {
   Stethoscope,
@@ -94,6 +95,7 @@ const careersPhone = "+94 74 202 8741";
 export default function CareersPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Careers", path: "/careers" }]} />
       <PageHero
         eyebrow="Join Our Team"
         title="Build Your Career With Us"

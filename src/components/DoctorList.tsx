@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Search, X, Info } from "lucide-react";
 import type { Doctor } from "@/data/doctors";
@@ -16,7 +15,6 @@ type Props = {
 };
 
 export function DoctorList({ doctors, specialties }: Props) {
-  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [specialtyParam, setSpecialtyParam] = useState("");
   
@@ -25,6 +23,7 @@ export function DoctorList({ doctors, specialties }: Props) {
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
     const q = searchParams.get("q");
     const s = searchParams.get("specialty");
     if (q) setQuery(q);

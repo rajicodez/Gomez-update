@@ -20,7 +20,7 @@ export function About() {
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md">
             <Image
               src="/images/229.png"
-              alt="Hospital exterior"
+              alt="Gomez Hospital Avissawella main building"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
@@ -29,7 +29,7 @@ export function About() {
           <div className="absolute -bottom-8 -right-4 lg:right-8 w-48 h-48 lg:w-60 lg:h-60 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
             <Image
               src="/images/about_us_4.png"
-              alt="Gomez Hospital Staff"
+              alt="Gomez Hospital staff"
               fill
               className="object-cover"
               sizes="240px"

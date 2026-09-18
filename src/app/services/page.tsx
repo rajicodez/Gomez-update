@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd, JsonLd } from "@/components/JsonLd";
+import Link from "next/link";
 import Image from "next/image";
 import { Check, UserRound, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
@@ -14,6 +16,18 @@ export const metadata = createPageMetadata({
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Services", path: "/services" }]} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "ItemList", name: "Hospital services",
+        itemListElement: services.map((service, index) => ({
+          "@type": "ListItem", position: index + 1,
+          item: {
+            "@type": "Service", name: service.title, description: service.description,
+            url: "https://gomezhospital.com/services#" + service.slug,
+            provider: { "@id": "https://gomezhospital.com/#hospital" },
+          },
+        })),
+      }} />
       <PageHero
         eyebrow="What We Offer"
         title="Our Services"
@@ -33,7 +47,7 @@ export default function ServicesPage() {
               <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] relative">
                 <Image
                   src={s.image}
-                  alt={s.title}
+                  alt={s.title + " at Gomez Hospital Avissawella"}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -44,7 +58,7 @@ export default function ServicesPage() {
                   <s.icon size={26} />
                 </div>
                 <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-3 flex flex-wrap items-center gap-3">
-                  <span>{s.title}</span>
+                  <span>{s.slug === "specialist-services" ? <Link href="/doctors">{s.title}</Link> : s.title}</span>
                   {(s.title === "Pharmacy Services" || s.title === "24 Hours Services (OPD)" || s.title === "Laboratory Services") && (
                     <span className="text-xs sm:text-sm font-bold uppercase tracking-wider bg-accent text-white px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
                       24 / 7
