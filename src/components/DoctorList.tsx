@@ -7,7 +7,7 @@ import type { Doctor } from "@/data/doctors";
 import { DoctorCard } from "@/components/DoctorCard";
 import { getSpecialtyInfos } from "@/data/specialties";
 import { getSpecialtyClinicLabel, resolveSpecialtyFilter, specialtyClinics } from "@/data/services";
-import { normalizeSearch, getDoctorSuggestions } from "@/data/doctors";
+import { getDoctorSuggestions, getSpecialtyDisplayName, matchesDoctorSearch, resolveCanonicalSpecialty } from "@/data/doctors";
 
 type Props = {
   doctors: Doctor[];
@@ -26,13 +26,13 @@ export function DoctorList({ doctors, specialties }: Props) {
     const searchParams = new URLSearchParams(window.location.search);
     const q = searchParams.get("q");
     const s = searchParams.get("specialty");
-    if (q) setQuery(q);
-    if (s) setSpecialtyParam(s);
-  }, []); // Only run once on mount
-
-  useEffect(() => {
-    setActiveIndex(-1);
-  }, [query]);
+    if (q || s) {
+      queueMicrotask(() => {
+        if (q) setQuery(q);
+        if (s) setSpecialtyParam(s);
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
@@ -44,19 +44,27 @@ export function DoctorList({ doctors, specialties }: Props) {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  const suggestions = useMemo(() => {
-    return getDoctorSuggestions(query);
-  }, [query]);
-
   const activeFilterSpecialties = useMemo(
     () => resolveSpecialtyFilter(specialtyParam, specialties),
     [specialtyParam, specialties],
   );
 
+  const suggestions = useMemo(() => {
+    return getDoctorSuggestions(query, {
+      specialty: activeFilterSpecialties.length > 0 ? activeFilterSpecialties : specialtyParam,
+    });
+  }, [query, specialtyParam, activeFilterSpecialties]);
+
   const activeFilterLabel = useMemo(() => {
     if (!specialtyParam) return null;
-    return getSpecialtyClinicLabel(specialtyParam) ?? specialtyParam;
-  }, [specialtyParam]);
+    const clinicLabel = getSpecialtyClinicLabel(specialtyParam);
+    if (clinicLabel) return clinicLabel;
+    if (activeFilterSpecialties.length === 1) {
+      return getSpecialtyDisplayName(activeFilterSpecialties[0]);
+    }
+    const canonical = resolveCanonicalSpecialty(specialtyParam);
+    return getSpecialtyDisplayName(canonical || specialtyParam);
+  }, [specialtyParam, activeFilterSpecialties]);
 
   const activeSpecialtyInfos = useMemo(
     () => getSpecialtyInfos(activeFilterSpecialties),
@@ -64,14 +72,8 @@ export function DoctorList({ doctors, specialties }: Props) {
   );
 
   const filtered = useMemo(() => {
-    const q = normalizeSearch(query);
-
     return doctors.filter((d) => {
-      const matchQ =
-        !q ||
-        normalizeSearch(d.name).includes(q) ||
-        normalizeSearch(d.specialty).includes(q) ||
-        normalizeSearch(d.hospital).includes(q);
+      const matchQ = matchesDoctorSearch(d, query);
       const matchS =
         activeFilterSpecialties.length === 0 ||
         activeFilterSpecialties.includes(d.specialty);
@@ -126,6 +128,7 @@ export function DoctorList({ doctors, specialties }: Props) {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
+              setActiveIndex(-1);
               setShowDropdown(true);
             }}
             onFocus={() => setShowDropdown(true)}
@@ -171,7 +174,7 @@ export function DoctorList({ doctors, specialties }: Props) {
           <option value="">All Specialties</option>
           {specialties.map((s) => (
             <option key={s} value={s}>
-              {s}
+              {getSpecialtyDisplayName(s)}
             </option>
           ))}
         </select>
@@ -184,7 +187,15 @@ export function DoctorList({ doctors, specialties }: Props) {
               Filtered by: <span className="font-semibold">{activeFilterLabel}</span>
             </span>
             <Link
-              href="/doctors"
+              href={query ? `/doctors?q=${encodeURIComponent(query)}` : "/doctors"}
+              onClick={(e) => {
+                e.preventDefault();
+                setSpecialtyParam("");
+                const params = new URLSearchParams(window.location.search);
+                params.delete("specialty");
+                const newUrl = params.toString() ? `/doctors?${params.toString()}` : "/doctors";
+                window.history.replaceState(null, "", newUrl);
+              }}
               className="inline-flex items-center justify-center rounded-full p-1 hover:bg-white/70 transition-colors"
               aria-label="Clear specialty filter"
             >

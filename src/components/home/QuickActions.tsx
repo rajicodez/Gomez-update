@@ -2,14 +2,13 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
   Search,
   Stethoscope,
   Calendar,
   ChevronDown,
 } from "lucide-react";
-import { specialties, getDoctorSuggestions } from "@/data/doctors";
+import { specialties, getDoctorSuggestions, getSpecialtyDisplayName } from "@/data/doctors";
 import { clinics } from "@/data/clinics";
 
 export function QuickActions() {
@@ -23,10 +22,6 @@ export function QuickActions() {
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setActiveIndex(-1);
-  }, [name]);
-
-  useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
       if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
         setShowDropdown(false);
@@ -37,8 +32,8 @@ export function QuickActions() {
   }, []);
 
   const suggestions = useMemo(() => {
-    return getDoctorSuggestions(name);
-  }, [name]);
+    return getDoctorSuggestions(name, { specialty });
+  }, [name, specialty]);
 
   const handleSelectSuggestion = (doctorName: string) => {
     setName(doctorName);
@@ -96,6 +91,7 @@ export function QuickActions() {
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
+                    setActiveIndex(-1);
                     setShowDropdown(true);
                   }}
                   onFocus={() => setShowDropdown(true)}
@@ -146,7 +142,7 @@ export function QuickActions() {
                   <option value="">Select Specialty</option>
                   {specialties.map((s) => (
                     <option key={s} value={s}>
-                      {s}
+                      {getSpecialtyDisplayName(s)}
                     </option>
                   ))}
                 </select>

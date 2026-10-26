@@ -1,3 +1,4 @@
+import { resolveCanonicalSpecialty, getSpecialtyDisplayName } from "./doctors";
 import {
   Stethoscope,
   BedDouble,
@@ -331,8 +332,15 @@ export function resolveSpecialtyFilter(param: string, availableSpecialties: stri
 
   if (availableSpecialties.includes(trimmed)) return [trimmed];
 
+  const canonical = resolveCanonicalSpecialty(trimmed);
+  if (canonical && availableSpecialties.includes(canonical)) {
+    return [canonical];
+  }
+
   const normalized = trimmed.toLowerCase().replace(/-/g, " ");
-  const match = availableSpecialties.find((s) => s.toLowerCase() === normalized);
+  const match = availableSpecialties.find(
+    (s) => s.toLowerCase() === normalized || getSpecialtyDisplayName(s).toLowerCase() === normalized
+  );
   return match ? [match] : [];
 }
 

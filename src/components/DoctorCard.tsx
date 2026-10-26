@@ -1,5 +1,6 @@
 import { Stethoscope, Calendar, Building } from "lucide-react";
 import type { Doctor } from "@/data/doctors";
+import { getSpecialtyDisplayName } from "@/data/doctors";
 import { BookingButton } from "@/components/BookingButton";
 
 type Props = {
@@ -45,7 +46,7 @@ export function DoctorCard({ doctor: d, index }: Props) {
                 : "bg-accent-soft text-accent"
             }`}
           >
-            {d.specialty}
+            {getSpecialtyDisplayName(d.specialty)}
           </div>
         </div>
       </div>

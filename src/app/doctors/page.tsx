@@ -1,7 +1,7 @@
 import { BreadcrumbJsonLd, JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { DoctorList } from "@/components/DoctorList";
-import { doctors, specialties } from "@/data/doctors";
+import { doctors, specialties, getSpecialtyDisplayName } from "@/data/doctors";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -21,9 +21,9 @@ export default function DoctorsPage() {
         itemListElement: doctors.map((doctor, index) => ({
           "@type": "ListItem", position: index + 1,
           item: {
-            "@type": "Person", name: doctor.name, jobTitle: doctor.specialty,
+            "@type": "Person", name: doctor.name, jobTitle: getSpecialtyDisplayName(doctor.specialty),
             affiliation: { "@type": "Organization", name: doctor.hospital },
-            description: [doctor.specialty, ...(doctor.credentials ?? []),
+            description: [getSpecialtyDisplayName(doctor.specialty), ...(doctor.credentials ?? []),
               "Consultations at Gomez Hospital Avissawella: " + doctor.clinicDays].join(". "),
           },
         })),
