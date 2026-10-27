@@ -503,3 +503,31 @@ export function getDoctorSuggestions(
 
   return matches.slice(0, maxResults).map((item) => item.doctor);
 }
+
+export function getDoctorSlug(doctorOrName: Doctor | string): string {
+  const name = typeof doctorOrName === "string" ? doctorOrName : doctorOrName.name;
+  return name
+    .replace(/^Dr\.\s*|^Dr\s+/i, "")
+    .toLowerCase()
+    .replace(/\./g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+export function getDoctorBySlug(slug: string): Doctor | undefined {
+  if (!slug) return undefined;
+  const normalized = slug.trim().toLowerCase();
+  return doctors.find((d) => getDoctorSlug(d) === normalized);
+}
+
+export function isConfirmedHospital(hospital?: string): boolean {
+  if (!hospital) return false;
+  const lower = hospital.toLowerCase();
+  return !lower.includes("please contact");
+}
+
+export function isConfirmedSchedule(clinicDays?: string): boolean {
+  if (!clinicDays) return false;
+  const lower = clinicDays.toLowerCase();
+  return !lower.includes("please contact");
+}
