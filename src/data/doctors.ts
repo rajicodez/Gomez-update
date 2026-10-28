@@ -94,7 +94,7 @@ export const doctors: Doctor[] = [
   {
     name: "Dr. Chinthaka Rajapaksha",
     specialty: "Pediatrician",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
@@ -118,7 +118,7 @@ export const doctors: Doctor[] = [
   {
     name: "Dr. A.W.P. Manjula",
     specialty: "General Surgeon",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
@@ -143,7 +143,7 @@ export const doctors: Doctor[] = [
   {
     name: "Dr. V.G. Abeywickrama",
     specialty: "Dermatologist",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
@@ -194,7 +194,7 @@ export const doctors: Doctor[] = [
   {
     name: "Dr. Sampath Marasinghe",
     specialty: "Orthopedic Surgeon",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
@@ -213,19 +213,19 @@ export const doctors: Doctor[] = [
   {
     name: "Dr. Madushankha Rathnayake",
     specialty: "Pulmonologist",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
     name: "Dr. Tharaka S. Nanayakkara",
     specialty: "VOG Specialist",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
     name: "Dr. Sajith Bandara",
     specialty: "VOG Specialist",
-    hospital: "Please contact the hospital to confirm",
+    hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
   },
   {
