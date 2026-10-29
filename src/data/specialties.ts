@@ -1,3 +1,4 @@
+import { resolveCanonicalSpecialty, getSpecialtyDisplayName } from "./doctors";
 export type SpecialtyInfo = {
   name: string;
   englishDescription: string;
@@ -149,9 +150,10 @@ export const specialtyDescriptions: Record<
 };
 
 export function getSpecialtyInfo(specialty: string): SpecialtyInfo | null {
-  const info = specialtyDescriptions[specialty];
+  const canonical = resolveCanonicalSpecialty(specialty) || specialty;
+  const info = specialtyDescriptions[canonical] || specialtyDescriptions[specialty];
   if (!info) return null;
-  return { name: specialty, ...info };
+  return { name: getSpecialtyDisplayName(canonical), ...info };
 }
 
 export function getSpecialtyInfos(specialties: string[]): SpecialtyInfo[] {

@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Stethoscope, Calendar, Building } from "lucide-react";
 import type { Doctor } from "@/data/doctors";
+import { getSpecialtyDisplayName, getDoctorSlug } from "@/data/doctors";
 import { BookingButton } from "@/components/BookingButton";
 
 type Props = {
@@ -9,6 +11,7 @@ type Props = {
 
 export function DoctorCard({ doctor: d, index }: Props) {
   const isFemale = d.gender === "female";
+  const slug = getDoctorSlug(d);
 
   return (
     <div className="group relative lift bg-white border border-border rounded-3xl p-6 overflow-hidden flex flex-col h-full">
@@ -33,10 +36,13 @@ export function DoctorCard({ doctor: d, index }: Props) {
               #{String(index + 1).padStart(2, "0")}
             </div>
           )}
-          <h2 className="font-bold text-primary leading-tight mt-1">
-            <BookingButton className="text-left hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
+          <h2 className="font-bold text-primary leading-tight mt-1 text-lg">
+            <Link
+              href={`/doctors/${slug}`}
+              className="hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+            >
               {d.name}
-            </BookingButton>
+            </Link>
           </h2>
           <div
             className={`mt-1.5 inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full ${
@@ -45,7 +51,7 @@ export function DoctorCard({ doctor: d, index }: Props) {
                 : "bg-accent-soft text-accent"
             }`}
           >
-            {d.specialty}
+            {getSpecialtyDisplayName(d.specialty)}
           </div>
         </div>
       </div>
@@ -66,6 +72,18 @@ export function DoctorCard({ doctor: d, index }: Props) {
         <div className="flex items-start gap-2 text-muted">
           <Calendar size={14} className="text-accent shrink-0 mt-0.5" />
           <span className="line-clamp-2">{d.clinicDays}</span>
+        </div>
+        <div className="pt-3 flex items-center justify-between gap-3 border-t border-border/60">
+          <Link
+            href={`/doctors/${slug}`}
+            className="text-xs font-semibold text-accent hover:text-accent-2 transition-colors inline-flex items-center gap-1 focus-visible:outline-none focus-visible:underline"
+          >
+            <span>View Profile</span>
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+          <BookingButton className="text-xs font-semibold px-3 py-1.5 rounded-full bg-accent-soft text-accent hover:bg-accent hover:text-white transition-colors">
+            Book
+          </BookingButton>
         </div>
       </div>
     </div>

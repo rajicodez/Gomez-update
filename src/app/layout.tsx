@@ -37,6 +37,8 @@ export const metadata: Metadata = {
     "Gomez Hospital Avissawella",
     "private hospital Avissawella",
     "healthcare Sri Lanka",
+    "doctor channeling Avissawella",
+    "specialist consultations Avissawella",
   ],
   robots: {
     index: true,
@@ -68,8 +70,31 @@ const hospitalJsonLd = {
     "@type": "PostalAddress",
     streetAddress: "No.63, Colombo Road",
     addressLocality: "Avissawella",
+    postalCode: "10700",
     addressCountry: "LK",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 6.9539248,
+    longitude: 80.20675,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  ],
+  priceRange: "$$",
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -95,14 +120,22 @@ export default function RootLayout({
         className="min-h-screen flex flex-col bg-white text-foreground pb-14 md:pb-0"
         suppressHydrationWarning
       >
-        <JsonLd data={{
-          "@context": "https://schema.org",
-          "@graph": [hospitalJsonLd, {
-            "@type": "WebSite", "@id": site.url + "/#website",
-            url: site.url, name: site.name, inLanguage: "en",
-            publisher: { "@id": hospitalJsonLd["@id"] },
-          }],
-        }} />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              hospitalJsonLd,
+              {
+                "@type": "WebSite",
+                "@id": site.url + "/#website",
+                url: site.url,
+                name: site.name,
+                inLanguage: "en",
+                publisher: { "@id": hospitalJsonLd["@id"] },
+              },
+            ],
+          }}
+        />
         <StickyHeader />
         <main className="flex-1">{children}</main>
         <Footer />
