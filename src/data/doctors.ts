@@ -226,7 +226,7 @@ export const doctors: Doctor[] = [
     name: "Dr. Sajith Bandara",
     specialty: "VOG Specialist",
     hospital: "Avissawella Base Hospital",
-    clinicDays: "Please contact the hospital to confirm",
+    clinicDays: "Weekdays, Saturday, Sunday",
   },
   {
     name: "Dr. Priyantha Weerasinghe",
