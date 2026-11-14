@@ -1,4 +1,4 @@
-export type Doctor = {
+﻿export type Doctor = {
   name: string;
   specialty: string;
   hospital: string;
@@ -98,22 +98,10 @@ export const doctors: Doctor[] = [
     clinicDays: "Weekdays, Saturday, Sunday",
   },
   {
-    name: "Dr. Sanjaya Walawenayaka",
-    specialty: "VOG Specialist",
-    hospital: "Avissawella Base Hospital",
-    clinicDays: "Weekdays, Saturday",
-  },
-  {
     name: "Dr. Pradeep Gunasekara",
     specialty: "Consultant Physician",
     hospital: "Avissawella Base Hospital",
     clinicDays: "Weekdays, Saturday",
-  },
-  {
-    name: "Dr. Sanath Wanigasooriya",
-    specialty: "General Surgeon",
-    hospital: "Avissawella Base Hospital",
-    clinicDays: "Weekdays, Saturday, Sunday",
   },
   {
     name: "Dr. A.W.P. Manjula",
@@ -126,6 +114,12 @@ export const doctors: Doctor[] = [
     specialty: "Cardiologist",
     hospital: "Avissawella Base Hospital",
     clinicDays: "Weekdays, Saturday",
+  },
+  {
+    name: "Dr. Shakthiraj",
+    specialty: "Cardiologist",
+    hospital: "Avissawella Base Hospital",
+    clinicDays: "Please contact the hospital to confirm",
   },
   {
     name: "Dr. Dhanushka Karunarathne",
@@ -145,12 +139,6 @@ export const doctors: Doctor[] = [
     specialty: "Dermatologist",
     hospital: "Avissawella Base Hospital",
     clinicDays: "Please contact the hospital to confirm",
-  },
-  {
-    name: "Dr. Visira Weerasekara",
-    specialty: "ENT Specialist",
-    hospital: "Avissawella Base Hospital",
-    clinicDays: "Weekdays, Saturday",
   },
   {
     name: "Dr. Aruna Rajapaksha",
@@ -185,11 +173,17 @@ export const doctors: Doctor[] = [
     clinicDays: "Sunday",
   },
   {
-    name: "Dr. Renuka Priyadarshani",
-    specialty: "Orthodontist",
+    name: "Dr. Thimali Kiriella",
+    specialty: "ENT Specialist",
     hospital: "Avissawella Base Hospital",
     gender: "female",
-    clinicDays: "Saturday",
+    clinicDays: "Please contact the hospital to confirm",
+  },
+  {
+    name: "Dr. Kanishka Samarasinghe",
+    specialty: "Orthodontist",
+    hospital: "Avissawella Base Hospital",
+    clinicDays: "Please contact the hospital to confirm",
   },
   {
     name: "Dr. Sampath Marasinghe",
@@ -241,12 +235,6 @@ export const doctors: Doctor[] = [
     specialty: "Cardiologist",
     hospital: "National Hospital - Colombo",
     clinicDays: "Wednesday, Saturday",
-  },
-  {
-    name: "Dr. Z. Jamaldeen",
-    specialty: "Cardiologist",
-    hospital: "Teaching Hospital - Kandy",
-    clinicDays: "First Sunday of every month",
   },
   {
     name: "Dr. Srilal Liyanarachchi",

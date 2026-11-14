@@ -28,7 +28,7 @@ export const branches: Branch[] = [
     phones: ["036 225 0550", "077 143 9944"],
     hours: [
       { label: "Emergency", value: "Open 24/7" },
-      { label: "Laboratory", value: "6:00 AM – 9:00 PM" },
+      { label: "Laboratory", value: "6:00 AM ΓÇô 9:00 PM" },
     ],
     mapEmbed:
       "https://maps.google.com/maps?q=W35J%2B65%20Hanwella&t=&z=13&ie=UTF8&iwloc=&output=embed",
@@ -62,11 +62,10 @@ export const branches: Branch[] = [
       { specialty: "Eye Surgeon", name: "Dr. Dilan Elvitigala", hospital: "Colombo" },
       { specialty: "Neurosurgeon", name: "Dr. Surath Munasinghe", hospital: "Colombo" },
       { specialty: "Neurosurgeon", name: "Dr. Arjuna Perera", hospital: "Ratnapura" },
-      { specialty: "ENT Surgeon", name: "Dr. Visira Weerasekara", hospital: "Avissawella" },
       { specialty: "Endocrinologist", name: "Dr. Kamni Liyanarachchi", hospital: "Kaluthara" },
       { specialty: "Orthopaedic Surgeon", name: "Dr. Ranji Pitagampalage", hospital: "Avissawella" },
       { specialty: "Homeopathy Physician", name: "Dr. Sandun Ranendra Gamage", hospital: "Panadura" },
-      { specialty: "Counsellor", name: "Mr. Sisira Kumara", hospital: "—" },
+      { specialty: "Counsellor", name: "Mr. Sisira Kumara", hospital: "ΓÇö" },
     ],
   },
 ];
